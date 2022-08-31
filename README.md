@@ -1,5 +1,3 @@
-# 🚧 WORK IN PROGRESS. See [#1](https://github.com/oscard0m/octoherd-script-remove-renovate-package.json/pull/1) | [Preview](https://github.com/oscard0m/octoherd-script-remove-renovate-package.json/tree/initial-version)
-
 # octoherd-script-remove-renovate-package.json
 
 > Removes 'renovate' entry in the package.json of a repository
