@@ -1,0 +1,33 @@
+{
+  "name": "octoherd-script-remove-renovate-package.json",
+  "version": "0.0.0-development",
+  "type": "module",
+  "exports": "./script.js",
+  "bin": {
+    "octoherd-script-remove-renovate-package.json": "./cli.js"
+  },
+  "description": "Removes 'renovate' entry in the package.json of a repository",
+  "scripts": {
+    "start": "node cli.js",
+    "test": "uvu . .*\\.test.js"
+  },
+  "repository": "https://github.com/oscard0m/octoherd-script-remove-renovate-package.json",
+  "keywords": [
+    "octoherd-script"
+  ],
+  "author": "Oscar Dominguez <dominguez.celada@gmail.com> (https://www.oscardom.dev)",
+  "license": "ISC",
+  "dependencies": {
+    "@octoherd/cli": "^3.4.10"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "devDependencies": {
+    "@octokit/plugin-create-or-update-text-file": "^2.0.2",
+    "nock": "^13.2.9",
+    "uvu": "^0.5.6"
+  }
+}
