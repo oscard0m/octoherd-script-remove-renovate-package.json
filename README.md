@@ -2,6 +2,9 @@
 
 > Removes 'renovate' entry in the package.json of a repository
 
+[![@latest](https://img.shields.io/npm/v/octoherd-script-remove-renovate-package.json.svg)](https://www.npmjs.com/package/octoherd-script-remove-renovate-package.json)
+[![Build Status](https://github.com/oscard0m/octoherd-script-remove-renovate-package.json/workflows/Test/badge.svg)](https://github.com/oscard0m/octoherd-script-remove-renovate-package.json/actions?query=workflow%3ATest+branch%3Amain)
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
