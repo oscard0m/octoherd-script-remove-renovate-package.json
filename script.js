@@ -47,7 +47,7 @@ export async function script(octokit, repository, { path }) {
 
       delete pkg.renovate;
 
-      return JSON.stringify(pkg, null, "\t");
+      return JSON.stringify(pkg, null, "  ") + "\n";
     },
     message: `build: remove renovate setup from ${packageJsonTilePath}`,
   });
