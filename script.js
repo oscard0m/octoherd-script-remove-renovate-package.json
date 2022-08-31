@@ -55,7 +55,7 @@ export async function script(octokit, repository, { path }) {
   octokit.log.info(
     { owner, repo, updated },
     !updated
-      ? `"no changes applied to ${path}`
+      ? `"no changes applied to ${packageJsonTilePath}`
       : `"${packageJsonTilePath}" updated in ${commit.html_url}`
   );
 }
