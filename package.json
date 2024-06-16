@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@octoherd/cli": "^3.4.10",
-    "@octokit/plugin-create-or-update-text-file": "^3.0.0"
+    "@octokit/plugin-create-or-update-text-file": "^5.0.0"
   },
   "devDependencies": {
     "nock": "^14.0.0-beta.7"
