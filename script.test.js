@@ -1,5 +1,5 @@
-import { test } from "uvu";
-import { equal, unreachable } from "uvu/assert";
+import { test, beforeEach, before, after } from "node:test";
+import assert from "node:assert";
 import { Octokit } from "@octoherd/cli";
 import { script } from "./script.js";
 import { repository } from "./tests/fixtures/repository-example.js";
@@ -12,15 +12,15 @@ const getOctokitForTests = () => {
   });
 };
 
-test.before(() => {
+before(() => {
   nock.disableNetConnect();
 });
 
-test.before.each(() => {
+beforeEach(() => {
   nock.cleanAll();
 });
 
-test.after(() => {
+after(() => {
   nock.restore();
 });
 
@@ -58,8 +58,11 @@ test("removes 'renovate' entry in package.json if entry existed", async () => {
 
         delete originalPackageJson.renovate;
 
-        equal(pkg, originalPackageJson);
-        equal(body.message, `build: remove renovate setup from ${path}`);
+        assert.deepEqual(pkg, originalPackageJson);
+        assert.deepEqual(
+          body.message,
+          `build: remove renovate setup from ${path}`
+        );
 
         return true;
       }
@@ -101,7 +104,7 @@ test("preserves spacing for JSON files", async () => {
     .put(
       `/repos/${repository.owner.login}/${repository.name}/contents/${path}`,
       (body) => {
-        equal(
+        assert.equal(
           Buffer.from(body.content, "base64").toString(),
           "{\n" +
             '  "name": "octoherd-cli",\n' +
@@ -161,7 +164,7 @@ test("'path' option recognizes paths containing package.json as package.json fil
       (body) => {
         const pkg = JSON.parse(Buffer.from(body.content, "base64").toString());
 
-        equal(pkg, {
+        assert.equal(pkg, {
           ...originalPackageJson,
           renovate: { extends: ["github>octoherd/.github"] },
         });
@@ -192,7 +195,7 @@ test("throws if JSON file provided is NOT a file", async () => {
     });
     unreachable("should have thrown");
   } catch (error) {
-    equal(
+    assert.equal(
       error.message,
       "[@octokit/plugin-create-or-update-text-file] https://api.github.com/repos/octocat/Hello-World/contents/package.json is not a file, but a dir"
     );
@@ -211,8 +214,8 @@ test("throws if server fails when retrieving the JSON file", async () => {
     });
     unreachable("should have thrown");
   } catch (error) {
-    equal(error.status, 500);
-    equal(error.name, "HttpError");
+    assert.equal(error.status, 500);
+    assert.equal(error.name, "HttpError");
   }
 });
 
@@ -225,7 +228,7 @@ test("returns if repository is archived", async () => {
     unreachable("should have NOT thrown");
   }
 
-  equal(nock.pendingMocks().length, 0);
+  assert.equal(nock.pendingMocks().length, 0);
 });
 
 test("skips if file does NOT exist in the repository", async () => {
