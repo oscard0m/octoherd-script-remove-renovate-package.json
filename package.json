@@ -21,11 +21,6 @@
     "@octoherd/cli": "^3.4.10",
     "@octokit/plugin-create-or-update-text-file": "^3.0.0"
   },
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "devDependencies": {
     "nock": "^13.2.9",
     "uvu": "^0.5.6"
